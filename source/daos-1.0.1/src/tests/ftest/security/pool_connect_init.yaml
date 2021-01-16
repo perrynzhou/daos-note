@@ -1,0 +1,27 @@
+hosts:
+ test_servers:
+  - server-A
+timeout: 200
+server_config:
+   name: daos_server
+pool:
+  mode: 511
+  name: daos_server
+  scm_size: 16777216
+  control_method: dmg
+  tests: !mux
+      user_root:
+        ids:
+           - owner
+           - 0
+           - PASS
+      root_user:
+        ids:
+           - 0
+           - owner
+           - PASS
+      root_root:
+        ids:
+           - 0
+           - 0
+           - FAIL
